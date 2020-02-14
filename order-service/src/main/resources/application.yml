@@ -1,0 +1,13 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: orderService
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        serviceName: orderService
+        health-check-path: /actuator/health
+        health-check-interval: 10s

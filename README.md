@@ -24,7 +24,3 @@
 
 
 ### 领域模型
-1. 接口save以及update参数，package位置为top.fan2wan.market.xxx.query,名称以Param结尾如：SaveDicParam
-2. 接口查询参数，package位置为top.fan2wan.market.xxx.query,名称以Query结尾如：PageDicQuery
-3. 接口返回值，package位置为top.fan2wan.market.xxx.dto，名称以DTO结尾，如PageDicDTO
-4. 业务变量，package位置为top.fan2wan.market.xxx.bo，名称以BO结尾，如ListDicBO

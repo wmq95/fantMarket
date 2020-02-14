@@ -1,0 +1,15 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: userService
+  profiles:
+    active: dev
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        serviceName: userService
+        health-check-path: /actuator/health
+        health-check-interval: 10s
