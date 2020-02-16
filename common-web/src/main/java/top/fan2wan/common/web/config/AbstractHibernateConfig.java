@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 public abstract class AbstractHibernateConfig {
     @Bean
-    @Profile("dev")
+    @Profile("default")
     public DataSource dataSource() {
         return DataSourceBuilder.create()
                 .driverClassName("org.h2.Driver")
@@ -34,6 +34,7 @@ public abstract class AbstractHibernateConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+        System.out.println("customer entityManager");
         HibernateJpaVendorAdapter japVendor = new HibernateJpaVendorAdapter();
         japVendor.setShowSql(true);
         LocalContainerEntityManagerFactoryBean entityManagerFactory
@@ -51,5 +52,10 @@ public abstract class AbstractHibernateConfig {
         return transactionManager;
     }
 
+    /**
+     * return entity package
+     *
+     * @return
+     */
     public abstract String entityPackage();
 }

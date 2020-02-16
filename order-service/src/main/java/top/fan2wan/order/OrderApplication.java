@@ -13,7 +13,8 @@ import top.fan2wan.order.config.OrderHibernateConfig;
  * @date: 2020-02-10 17:09
  */
 @SpringBootApplication
-@Import({OrderHibernateConfig.class,
+@Import({
+        OrderHibernateConfig.class,
         FeignConfig.class,
         WebBootConfig.class})
 public class OrderApplication {

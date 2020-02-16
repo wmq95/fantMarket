@@ -11,3 +11,8 @@ spring:
         serviceName: orderService
         health-check-path: /actuator/health
         health-check-interval: 10s
+
+
+#      url: jdbc:mysql://www.fan2wan.top:7777/testSpring?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+#      username: fant
+#      password: 123456
