@@ -11,37 +11,22 @@ spring:
         serviceName: orderService
         health-check-path: /actuator/health
         health-check-interval: 10s
-  jpa:
-    show-sql: true
-    open-in-view: false
-    hibernate:
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   profiles:
     active: dev
+  jpa:
+    hibernate:
+      ddl-auto: create
 
 
+#      url: jdbc:mysql://www.fan2wan.top:7777/testSpring?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+#      username: fant
+#      password: 123456
 
 ---
 spring:
   profiles: dev
   datasource:
-    platform: mysql
-    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://www.fan2wan.top:7777/testSpring?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: fant
     password: 123456
-#    dbcp2:
-#      initial-size: 5
-#      max-idle: 20
-#      validation-query: select 1
-#      validation-query-timeout: 2
-#      remove-abandoned-on-maintenance: true
-#      remove-abandoned-on-borrow: true
-#      url: jdbc:mysql://www.fan2wan.top:7777/testSpring?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
-#      username: fant
-#      password: 123456
-  jpa:
-    database: mysql
-    hibernate:
-      ddl-auto: create
