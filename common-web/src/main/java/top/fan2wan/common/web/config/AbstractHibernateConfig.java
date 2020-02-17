@@ -24,7 +24,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 public abstract class AbstractHibernateConfig {
 
-    @Value("${spring.jpa.hibernate.ddl-auto}")
+    @Value("${spring.jpa.hibernate.ddl-auto:#{'update'}}")
     private String mode;
 
     @Bean
@@ -50,7 +50,7 @@ public abstract class AbstractHibernateConfig {
         entityManagerFactory.setJpaVendorAdapter(japVendor);
         entityManagerFactory.setPackagesToScan(entityPackage());
         Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.hbm2ddl.auto", mode == null ? "update" : mode);
+        jpaProperties.put("hibernate.hbm2ddl.auto", mode);
         jpaProperties.put("hibernate.show-sql", true);
         entityManagerFactory.setJpaProperties(jpaProperties);
         return entityManagerFactory;

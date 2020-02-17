@@ -15,8 +15,10 @@ spring:
     active: dev
   jpa:
     hibernate:
-      ddl-auto: create
-
+      ddl-auto: update
+feign:
+  hystrix:
+    enabled: true
 
 #      url: jdbc:mysql://www.fan2wan.top:7777/testSpring?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
 #      username: fant

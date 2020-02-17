@@ -13,3 +13,6 @@ spring:
         serviceName: userService
         health-check-path: /actuator/health
         health-check-interval: 10s
+feign:
+  hystrix:
+    enabled: true

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author: FT
  * @date: 2020-02-10 12:31
  */
-@FeignClient("userService")
+@FeignClient(name = "userService")
 public interface UserFeignApi {
 
     @RequestMapping("/user/index")

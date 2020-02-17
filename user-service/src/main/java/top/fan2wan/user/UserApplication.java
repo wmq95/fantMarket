@@ -23,7 +23,7 @@ public class UserApplication {
     private static Logger logger = LoggerFactory.getLogger(UserApplication.class);
 
     public static void main(String[] args) {
-        System.out.println("service start..........");
+        logger.info("service start..........");
         SpringApplication.run(UserApplication.class, args);
     }
 }
