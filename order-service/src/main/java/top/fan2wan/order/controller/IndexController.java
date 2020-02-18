@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import top.fan2wan.common.web.controller.BaseController;
 import top.fan2wan.order.entity.OrderEntity;
 import top.fan2wan.order.repository.TestRepository;
@@ -30,7 +32,6 @@ public class IndexController extends BaseController {
     public String index() {
         logger.info("call userFeign.....");
         logger.info("obtain user form request ,user was:{}", request.getHeader("user"));
-        request.setAttribute("user","user");
         return userFeignApi.index();
     }
 

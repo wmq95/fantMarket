@@ -20,6 +20,12 @@ public class UserController extends BaseController implements UserFeignApi {
     public String index() {
         logger.info("obtain form request Header,user was :{}", request.getHeader("user"));
         logger.info("obtain form request Attribute,user was :{}", request.getAttribute("user"));
+//        try {
+//            logger.info("sleep 10s ,test time out ");
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return "this is user Controller";
     }
 }
