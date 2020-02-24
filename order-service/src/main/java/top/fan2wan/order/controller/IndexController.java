@@ -43,9 +43,4 @@ public class IndexController extends BaseController {
         entity.setPrice(0.1);
         return testRepository.save(entity);
     }
-
-    @RequestMapping("/actuator/health")
-    public String health() {
-        return "ok";
-    }
 }
