@@ -14,13 +14,6 @@
 
     <dependencies>
 
-        <!--common  api-->
-        <dependency>
-            <groupId>top.fan2wan</groupId>
-            <artifactId>commo-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
         <!--spring config web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -39,6 +32,26 @@
                     <artifactId>log4j-over-slf4j</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!-- actuator-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!--flyway-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>5.0.3</version>
+        </dependency>
+
+        <!--common  api-->
+        <dependency>
+            <groupId>top.fan2wan</groupId>
+            <artifactId>commo-api</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <!--consul-->

@@ -17,8 +17,8 @@ public class IndexController {
         return "hello ft";
     }
 
-    @RequestMapping("/actuator/health")
+  /*  @RequestMapping("/actuator/health")
     public String health() {
         return "ok";
-    }
+    }*/
 }

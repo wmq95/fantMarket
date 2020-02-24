@@ -1,10 +1,7 @@
 package top.fan2wan.common.web.config;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -24,24 +21,8 @@ import java.util.Properties;
 @EnableTransactionManagement
 public abstract class AbstractHibernateConfig {
 
-    @Value("${spring.jpa.hibernate.ddl-auto:#{'update'}}")
-    private String mode;
-
-    @Bean
-    @Profile("default")
-    public DataSource dataSource() {
-        System.out.println("default datasource of h2");
-        return DataSourceBuilder.create()
-                .driverClassName("org.h2.Driver")
-                .url("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1")
-                .username("sa")
-                .password("")
-                .build();
-    }
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
-        System.out.println("customer entityManager");
         HibernateJpaVendorAdapter japVendor = new HibernateJpaVendorAdapter();
         japVendor.setShowSql(true);
         LocalContainerEntityManagerFactoryBean entityManagerFactory
@@ -50,7 +31,6 @@ public abstract class AbstractHibernateConfig {
         entityManagerFactory.setJpaVendorAdapter(japVendor);
         entityManagerFactory.setPackagesToScan(entityPackage());
         Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.hbm2ddl.auto", mode);
         jpaProperties.put("hibernate.show-sql", true);
         entityManagerFactory.setJpaProperties(jpaProperties);
         return entityManagerFactory;
