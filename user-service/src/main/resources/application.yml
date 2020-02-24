@@ -17,6 +17,15 @@ spring:
         register: false
   flyway:
     enabled: false
+  redis:
+    host: www.fan2wan.top
+    port: 6379
+    timeout: 5000
+    lettuce:
+      pool:
+        max-active: 16
+        max-wait: 1000
+
 feign:
   hystrix:
     enabled: true
