@@ -28,11 +28,18 @@ public class UserController extends BaseController implements UserFeignApi {
 
     @Override
     public String index() {
-        logger.info("insert user ....");
+        logger.info("sleep 1s");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "I am done";
+        /*logger.info("insert user ....");
         UserEntity userEntity = new UserEntity();
         userEntity.setName("test User");
         userEntity.setTelephone("13921114098");
-        return userRepository.save(userEntity).toString();
+        return userRepository.save(userEntity).toString();*/
     }
 
     @RequestMapping("/transaction")

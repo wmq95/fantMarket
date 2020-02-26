@@ -1,8 +1,10 @@
 package top.fan2wan.common.web.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -18,6 +20,9 @@ import top.fan2wan.common.web.intercept.IdempotentIntercept;
 @Configuration
 @EnableDiscoveryClient
 public class WebBootConfig implements WebMvcConfigurer {
+
+    @Autowired
+    RedisTemplate redisTemplate;
 
     /**
      * 跨越
@@ -39,6 +44,6 @@ public class WebBootConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new IdempotentIntercept());
+        registry.addInterceptor(new IdempotentIntercept(redisTemplate));
     }
 }

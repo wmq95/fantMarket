@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 import top.fan2wan.common.web.config.FeignConfig;
+import top.fan2wan.common.web.config.RedisConfig;
 import top.fan2wan.common.web.config.WebBootConfig;
 import top.fan2wan.user.config.UserHibernateConfig;
 
@@ -17,6 +18,7 @@ import top.fan2wan.user.config.UserHibernateConfig;
 @SpringBootApplication
 @Import({UserHibernateConfig.class,
         FeignConfig.class,
+        RedisConfig.class,
         WebBootConfig.class})
 public class UserApplication {
 

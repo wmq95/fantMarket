@@ -7,5 +7,6 @@ package top.fan2wan.common.web.constants;
  */
 public class TokenConstant {
 
-    public static final String TOKEN_MARK = "token";
+    public static final String TOKEN_NAME = "token";
+
 }

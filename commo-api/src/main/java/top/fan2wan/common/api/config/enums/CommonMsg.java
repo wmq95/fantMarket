@@ -9,8 +9,9 @@ import top.fan2wan.common.api.config.dto.IMsg;
  * @date: 2020-02-24 14:32
  */
 public enum CommonMsg implements IMsg {
-    ERROE(500, "服务器异常"),
-    TOKEN_ERROE(401, "token异常");
+    REPEAT_OPERATION(2001, "请勿重复点击"),
+    TOKEN_ERROE(4001, "token异常"),
+    REDIS_ERROE(5002, "redis 服务异常");
 
     int code;
 

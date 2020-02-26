@@ -1,5 +1,6 @@
 server:
   port: 8001
+
 spring:
   application:
     name: orderService
@@ -13,13 +14,27 @@ spring:
         health-check-interval: 10s
   profiles:
     active: dev
-  jpa:
-    hibernate:
-      ddl-auto: update
+  flyway:
+    enabled: false
+
 feign:
   hystrix:
     enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 3000
+        readTimeout: 5000
 hystrix:
+  threadpool:
+    userService:
+      coreSize: 2
+      maxQueueSize: 5
+      queueSizeRejectionThreshold: 3
+    default:
+      coreSize: 2
+      maxQueueSize: 5
+      queueSizeRejectionThreshold: 3
   command:
     default:
       execution:
@@ -27,18 +42,31 @@ hystrix:
           enabled: true
         isolation:
           thread:
-            timeoutInMilliseconds: 2000
-          strategy: SEMAPHORE
+            timeoutInMilliseconds: 6000
+          strategy: THREAD
 
-#      url: jdbc:mysql://www.fan2wan.top:7777/testSpring?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
-#      username: fant
-#      password: 123456
 
 ---
 spring:
   profiles: dev
   datasource:
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+    username: sa
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+---
+spring:
+  profiles: prod
+  datasource:
     url: jdbc:mysql://www.fan2wan.top:7777/testSpring?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: fant
     password: 123456
+  flyway:
+    locations: classpath:/db/mysql
+#    baseline-on-migrate: true

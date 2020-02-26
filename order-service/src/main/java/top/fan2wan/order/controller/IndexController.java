@@ -31,7 +31,7 @@ public class IndexController extends BaseController {
     @RequestMapping("/index")
     public String index() {
         logger.info("call userFeign.....");
-        logger.info("obtain user form request ,user was:{}", request.getHeader("user"));
+//        logger.info("obtain user form request ,user was:{}", request.getHeader("user"));
         return userFeignApi.index();
     }
 
