@@ -5,12 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import top.fan2wan.common.web.controller.BaseController;
 import top.fan2wan.order.entity.OrderEntity;
 import top.fan2wan.order.repository.TestRepository;
 import top.fan2wan.user.feign.UserFeignApi;
+
+import java.util.concurrent.Callable;
 
 /**
  * @description: indexController for order
@@ -42,5 +42,13 @@ public class IndexController extends BaseController {
         entity.setName("save test");
         entity.setPrice(0.1);
         return testRepository.save(entity);
+    }
+
+    @RequestMapping("/callable")
+    public Callable<String> indexCallabl(String name) {
+        return () -> {
+            Thread.sleep(2000);
+            return "hello:" + name;
+        };
     }
 }

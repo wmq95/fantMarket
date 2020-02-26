@@ -12,6 +12,8 @@ spring:
         serviceName: orderService
         health-check-path: /actuator/health #引入actuator 配置健康检查路径 也可以自定义url 返回ok
         health-check-interval: 10s
+#        register: false
+#        enabled: false
   profiles:
     active: dev
   flyway:
