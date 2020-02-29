@@ -1,0 +1,18 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: zuul-service
+#  profiles:
+#    active: dev
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        serviceName: zuul-service
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+#zuul:
+#  routes:
+#    order-service:  /order/**
