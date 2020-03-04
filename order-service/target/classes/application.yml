@@ -10,8 +10,10 @@ spring:
       port: 8500
       discovery:
         serviceName: orderService
-        health-check-path: /actuator/health
+        health-check-path: /actuator/health #引入actuator 配置健康检查路径 也可以自定义url 返回ok
         health-check-interval: 10s
+        register: false
+        enabled: false
   profiles:
     active: dev
   flyway:
@@ -20,18 +22,19 @@ spring:
 feign:
   hystrix:
     enabled: true
+#      feign 重试机制
   client:
     config:
       default:
         connectTimeout: 3000
         readTimeout: 5000
 hystrix:
-  threadpool:
-    userService:
-      coreSize: 2
-      maxQueueSize: 5
-      queueSizeRejectionThreshold: 3
-    default:
+  threadpool: # 接口限流 这个配置只在hystrix THREAD 模式下才有用
+#    userService: #可以给单独某个feign 客户端配置 甚至可以给指定方法配置
+#      coreSize: 2
+#      maxQueueSize: 5
+#      queueSizeRejectionThreshold: 3
+    default:  #默认配置
       coreSize: 2
       maxQueueSize: 5
       queueSizeRejectionThreshold: 3
@@ -44,7 +47,6 @@ hystrix:
           thread:
             timeoutInMilliseconds: 6000
           strategy: THREAD
-
 
 ---
 spring:
