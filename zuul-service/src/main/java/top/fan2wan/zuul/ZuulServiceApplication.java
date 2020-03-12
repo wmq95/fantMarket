@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.netflix.zuul.filters.discovery.PatternServiceRouteMapper;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @description: application for zuulService
@@ -13,6 +15,7 @@ import org.springframework.context.annotation.Bean;
  */
 @EnableZuulProxy
 @SpringBootApplication
+@RestController
 public class ZuulServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ZuulServiceApplication.class,args);
@@ -23,5 +26,10 @@ public class ZuulServiceApplication {
         return new PatternServiceRouteMapper(
                 "(?<name>^.+)-service",
                 "service/${name}");
+    }
+
+    @RequestMapping("/index")
+    public String index() {
+        return "this is zuul";
     }
 }

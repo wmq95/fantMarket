@@ -27,6 +27,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <guava.verison>23.0</guava.verison>
+        <!--docker-->
+        <docker.image.prefix>1282904462</docker.image.prefix>
     </properties>
 
     <dependencyManagement>
